@@ -175,7 +175,10 @@ diskstimer:start()
 batterywidget = wibox.widget.textbox("...")
 batterytimer = timer({ timeout = 1 })
 batterytimer:connect_signal("timeout", function()
-  local battery_level = tonumber(string.match(execute_command("acpi"), "%d%d"))
+  local battery_level = tonumber(string.match(execute_command("acpi"), "%d%d%d"))
+  if (not battery_level) then
+    battery_level = tonumber(string.match(execute_command("acpi"), "%d%d"))
+  end
   local battery_status_color = "green"
   if (battery_level < 70) then
     battery_status_color = "yellow"
