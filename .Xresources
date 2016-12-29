@@ -1,0 +1,5 @@
+XTerm*foreground: rgb:df/df/df
+XTerm*background: rgb:08/08/08
+XTerm*color0: rgb:20/20/20
+xterm*faceName: Ubuntu Mono
+xterm*faceSize: 11
