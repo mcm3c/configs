@@ -91,19 +91,19 @@ screen_configs = {
     ["key"] = "2"
   },
   {
-    ["name"] = "3 ide",
+    ["name"] = "3",
     ["key"] = "3"
   },
   {
-    ["name"] = "4 thb",
+    ["name"] = "4",
     ["key"]="4"
   },
   {
-    ["name"] = "s trn",
+    ["name"] = "s",
     ["key"] = "s"
   },
   {
-    ["name"] = "w skp",
+    ["name"] = "w",
     ["key"]="w"
   },
   {
@@ -111,11 +111,11 @@ screen_configs = {
     ["key"]="q"
   },
   {
-    ["name"] = "u upw",
-    ["key"]="u"
+    ["name"] = "t",
+    ["key"]="t"
   },
   {
-    ["name"] = "` im",
+    ["name"] = "`",
     ["key"]="`"
   }
 }
@@ -155,44 +155,12 @@ kbdtimer:connect_signal("timeout", function()
   if current_layout == "us" then
     layout_color = "yellow"
   else
-    layout_color = "blue"
+    layout_color = "cyan"
   end
   kbdwidget:set_markup("<span color='" .. layout_color .. "'>[ " .. current_layout .. " ]</span> ")
 end)
 kbdtimer:start()
 
--- disks widget
-diskswidget = wibox.widget.textbox("...")
-diskstimer = timer({ timeout = 1 })
-diskstimer:connect_signal("timeout", function()
-  local temp = execute_command("cat /tmp/discsmon.log")
-  diskswidget:set_markup('<span color="green">[ ' .. temp .. ' ]</span> ')
-end)
-diskstimer:start()
-
-
--- battery widget via acpi
-batterywidget = wibox.widget.textbox("...")
-batterytimer = timer({ timeout = 1 })
-batterytimer:connect_signal("timeout", function()
-  local battery_level = tonumber(string.match(execute_command("acpi"), "%d%d%d"))
-  if (not battery_level) then
-    battery_level = tonumber(string.match(execute_command("acpi"), "%d%d"))
-  end
-  local battery_status_color = "green"
-  if (battery_level < 70) then
-    battery_status_color = "yellow"
-  elseif (battery_level < 50) then
-    battery_status_color = "orange"
-  elseif (battery_level < 20) then
-    battery_status_color = "red"
-  end
-  batterywidget:set_markup('<span color="' .. battery_status_color .. '">[ ' .. battery_level .. '% ]</span> ')
-end)
-batterytimer:start()
-batterywidget:buttons(awful.util.table.join(
-    awful.button({ }, 1, function () naughty.notify({text=execute_command("acpi")}) end)
-))
 
 -- Execute command and return its output. You probably won't only execute commands with one
 -- line of output
@@ -212,7 +180,20 @@ end
 -- Create a textclock widget
 mytextclock = awful.widget.textclock(" %d.%m %H:%M ", 2)
 
-local widgets = {kbdwidget, batterywidget, diskswidget, mytextclock}
+mytestclock_tooltip = awful.tooltip({
+    objects = { mytextclock },
+    timer_function = function()
+    local now = os.time()
+    local utcdate = os.date("!*t", now)
+    local nsk_time = os.time(utcdate) + (6*3600)
+    local nz_time =  os.time(utcdate) + (12*3600)
+    local tooltip_text = os.date("  nz: %d %m, %H:%M  \n", nz_time)
+    .. os.date("  nsk: %d %m, %H:%M  ", nsk_time)
+    return tooltip_text
+    end,
+})
+
+local widgets = {kbdwidget, mytextclock}
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -364,8 +345,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
     awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
-    awful.key({ modkey,           }, "[", function () awful.screen.focus(1) end),
-    awful.key({ modkey,           }, "]", function () awful.screen.focus(2) end),
+    awful.key({ modkey,           }, "[", function () awful.screen.focus(2) end),
+    awful.key({ modkey,           }, "]", function () awful.screen.focus(1) end),
 
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
@@ -559,13 +540,13 @@ client.connect_signal("manage", function (c, startup)
     end
 end)
 
-client.connect_signal("focus", function(c)
-  c.border_color = beautiful.border_focus
-  c.opacity = 1.0
-end)
-client.connect_signal("unfocus", function(c)
-  c.border_color = beautiful.border_normal
-  c.opacity = 0.9
-end)
+-- client.connect_signal("focus", function(c)
+--  c.border_color = beautiful.border_focus
+--  c.opacity = 1.0
+-- end)
+--client.connect_signal("unfocus", function(c)
+--  c.border_color = beautiful.border_normal
+--  c.opacity = 0.9
+--end)
 
 -- }}}
