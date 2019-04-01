@@ -10,7 +10,7 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
-local vicious = require("vicious")
+-- local vicious = require("vicious")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -40,6 +40,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 beautiful.init("/home/mcm/.config/awesome/default/theme.lua")
+gears.wallpaper.set("#000")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
@@ -212,7 +213,7 @@ end
 -- Create a textclock widget
 mytextclock = awful.widget.textclock(" %d.%m %H:%M ", 2)
 
-local widgets = {kbdwidget, batterywidget, diskswidget, mytextclock}
+local widgets = {kbdwidget, mytextclock}
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -352,7 +353,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "t", function () awful.util.spawn("amixer set Headphone toggle & amixer set Speaker toggle &") end),
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey,           }, "e", function () awful.util.spawn("dmenu_run") end),
-    awful.key({ modkey, "Control" }, "l", function () awful.util.spawn("sxlock") end),
+    awful.key({ modkey, "Control" }, "l", function () awful.util.spawn("gnome-screensaver-command -l") end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     -- awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
@@ -463,7 +464,12 @@ awful.rules.rules = {
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      keys = clientkeys,
-                     buttons = clientbuttons } },
+                     buttons = clientbuttons,
+                     maximized_horizontal = false,
+                     maximized_vertical = false,
+                     maximized = false,
+                     screen = awful.screen.focused
+    } },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
     { rule = { class = "pinentry" },
@@ -486,6 +492,10 @@ awful.rules.rules = {
       sticky = true,
       ontop = false,
       focusable = false }
+    },
+    {
+      rule = { class = "chromium-browser" },
+      properties = { maximized = false }
     }
 }
 -- }}}
@@ -560,12 +570,12 @@ client.connect_signal("manage", function (c, startup)
 end)
 
 client.connect_signal("focus", function(c)
-  c.border_color = beautiful.border_focus
+  -- c.border_color = beautiful.border_focus
   c.opacity = 1.0
 end)
 client.connect_signal("unfocus", function(c)
-  c.border_color = beautiful.border_normal
-  c.opacity = 0.9
+  -- c.border_color = beautiful.border_normal
+  c.opacity = 0.1
 end)
 
 -- }}}
