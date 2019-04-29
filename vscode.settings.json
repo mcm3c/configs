@@ -1,0 +1,56 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": true
+  },
+  "editor.formatOnSave": false,
+  "editor.minimap.enabled": false,
+  "editor.rulers": [100],
+  "editor.tabCompletion": "on",
+  "editor.tabSize": 2,
+  "editor.trimAutoWhitespace": true,
+  "editor.wordWrap": "off",
+
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.svn": true,
+    "**/CVS": true,
+    "dist": true,
+  },
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+
+  "todo-tree.defaultHighlight": {
+    "icon": "alert",
+    "iconColour": "#990",
+    "type": "text",
+    "background": "#ff0",
+    "opacity": 10
+  },
+  "todo-tree.tags": [
+    "TODO",
+    "NOCOMMIT"
+  ],
+  "todo-tree.customHighlight": {
+    "NOCOMMIT": {
+      "icon": "x",
+      "iconColour": "#f00",
+      "background": "#f00",
+      "foreground": "#fff",
+      "opacity": 100
+    }
+  },
+  "tslint.alwaysShowRuleFailuresAsWarnings": true,
+  "tslint.jsEnable": true,
+  "tslint.ignoreDefinitionFiles": true,
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "window.title": "${dirty}${activeEditorShort}${separator}${activeEditorLong}",
+  "workbench.colorCustomizations": {
+    "gitDecoration.addedResourceForeground": "#629755",
+    "gitDecoration.ignoredResourceForeground": "#848504",
+    "gitDecoration.modifiedResourceForeground": "#6897BB",
+    "gitDecoration.untrackedResourceForeground": "#D1675A",
+  },
+  "workbench.tree.indent": 20,
+}
