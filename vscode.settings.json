@@ -3,6 +3,7 @@
     "source.fixAll.tslint": true
   },
   "editor.formatOnSave": false,
+  "editor.links": false,
   "editor.minimap.enabled": false,
   "editor.rulers": [100],
   "editor.tabCompletion": "on",
@@ -53,4 +54,5 @@
     "gitDecoration.untrackedResourceForeground": "#D1675A",
   },
   "workbench.tree.indent": 20,
+  "mocha.files.glob": "dist/__tests__/**/*.js",
 }
