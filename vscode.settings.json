@@ -5,12 +5,14 @@
   "editor.formatOnSave": false,
   "editor.links": false,
   "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "all",
   "editor.rulers": [100],
   "editor.tabCompletion": "on",
   "editor.tabSize": 2,
   "editor.trimAutoWhitespace": true,
   "editor.wordWrap": "off",
 
+  "files.autoSave": "afterDelay",
   "files.exclude": {
     "**/.DS_Store": true,
     "**/.git": true,
@@ -21,6 +23,17 @@
   },
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
+
+  "gitlens.codeLens.enabled": false,
+  "gitlens.views.repositories.location": "scm",
+  "gitlens.views.fileHistory.location": "scm",
+  "gitlens.views.lineHistory.location": "scm",
+  "gitlens.views.compare.location": "scm",
+  "gitlens.views.search.location": "scm",
+  "gitlens.views.fileHistory.enabled": false,
+  "gitlens.views.lineHistory.enabled": false,
+  "gitlens.views.search.enabled": false,
+  "gitlens.views.compare.enabled": false,
 
   "todo-tree.defaultHighlight": {
     "icon": "alert",
@@ -53,6 +66,7 @@
     "gitDecoration.modifiedResourceForeground": "#6897BB",
     "gitDecoration.untrackedResourceForeground": "#D1675A",
   },
+  "workbench.colorTheme": "Darcula",
   "workbench.tree.indent": 20,
   "mocha.files.glob": "dist/__tests__/**/*.js",
 }
