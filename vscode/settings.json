@@ -1,7 +1,10 @@
 {
+  "breadcrumbs.enabled": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.tslint": true
   },
+  "editor.fontSize": 15,
+  "editor.fontFamily": "'Source Code Pro','Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
   "editor.formatOnSave": false,
   "editor.links": false,
   "editor.minimap.enabled": false,
@@ -11,6 +14,8 @@
   "editor.tabSize": 2,
   "editor.trimAutoWhitespace": true,
   "editor.wordWrap": "off",
+
+  "scm.diffDecorationsGutterWidth": 5,
 
   "files.autoSave": "afterDelay",
   "files.exclude": {
@@ -30,10 +35,16 @@
   "gitlens.views.lineHistory.location": "scm",
   "gitlens.views.compare.location": "scm",
   "gitlens.views.search.location": "scm",
-  "gitlens.views.fileHistory.enabled": false,
+  "gitlens.views.fileHistory.enabled": true,
   "gitlens.views.lineHistory.enabled": false,
   "gitlens.views.search.enabled": false,
   "gitlens.views.compare.enabled": false,
+
+  "local-history.daysLimit": 0,
+  "local-history.maxDisplay": 1000,
+  "local-history.saveDelay": 0,
+
+  "prettier.tslintIntegration": true,
 
   "todo-tree.defaultHighlight": {
     "icon": "alert",
@@ -58,15 +69,51 @@
   "tslint.alwaysShowRuleFailuresAsWarnings": true,
   "tslint.jsEnable": true,
   "tslint.ignoreDefinitionFiles": true,
+  "typescript.tsserver.log": "verbose",
   "typescript.tsdk": "./node_modules/typescript/lib",
+  "vscode_custom_css.imports": [
+    "file:///home/mcm/.vscode-oss/custom/style.css",
+    "file:///home/mcm/.vscode-oss/extensions/pzuraq.vertical-tab-bar-1.0.0/styles.css"
+  ],
+  "vscode_custom_css.policy": true,
   "window.title": "${dirty}${activeEditorShort}${separator}${activeEditorLong}",
+  "workbench.editor.enablePreview": false,
   "workbench.colorCustomizations": {
     "gitDecoration.addedResourceForeground": "#629755",
     "gitDecoration.ignoredResourceForeground": "#848504",
     "gitDecoration.modifiedResourceForeground": "#6897BB",
     "gitDecoration.untrackedResourceForeground": "#D1675A",
   },
-  "workbench.colorTheme": "Darcula",
+  "workbench.colorTheme": "Darcula Extra",
   "workbench.tree.indent": 20,
   "mocha.files.glob": "dist/__tests__/**/*.js",
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "cSpell.userWords": [
+    "Exposable",
+    "PRESOULFILE",
+    "PRESOULFILES",
+    "Promisified",
+    "SOULFILES",
+    "SOULFILESERVICE",
+    "Soulfile",
+    "Wavenet",
+    "configdb",
+    "datasource",
+    "datasources",
+    "ddna",
+    "fkey",
+    "guids",
+    "postgresql",
+    "presoul",
+    "promisify",
+    "soulmachines",
+    "testlab",
+    "timetrackable"
+  ],
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.currentLine.enabled": false,
+  "gitlens.hovers.enabled": false,
+  "window.zoomLevel": 0
 }
