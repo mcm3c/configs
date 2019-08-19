@@ -24,7 +24,7 @@
     "**/.hg": true,
     "**/.svn": true,
     "**/CVS": true,
-    "dist": true,
+    "dist": true
   },
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
@@ -45,6 +45,11 @@
   "local-history.saveDelay": 0,
 
   "prettier.tslintIntegration": true,
+
+  "search.exclude":{
+    "node_modules": true,
+    ".history": true
+  },
 
   "todo-tree.defaultHighlight": {
     "icon": "alert",
@@ -78,6 +83,7 @@
   "vscode_custom_css.policy": true,
   "window.title": "${dirty}${activeEditorShort}${separator}${activeEditorLong}",
   "workbench.editor.enablePreview": false,
+  "workbench.editor.showTabs": false,
   "workbench.colorCustomizations": {
     "gitDecoration.addedResourceForeground": "#629755",
     "gitDecoration.ignoredResourceForeground": "#848504",
@@ -91,6 +97,7 @@
     "editor.defaultFormatter": "vscode.json-language-features"
   },
   "cSpell.userWords": [
+    "DATETIME",
     "Exposable",
     "PRESOULFILE",
     "PRESOULFILES",
@@ -98,6 +105,9 @@
     "SOULFILES",
     "SOULFILESERVICE",
     "Soulfile",
+    "Undeploy",
+    "Undeployment",
+    "Unprocessable",
     "Wavenet",
     "configdb",
     "datasource",
@@ -105,6 +115,12 @@
     "ddna",
     "fkey",
     "guids",
+    "kubernetis",
+    "loopback's",
+    "middlewares",
+    "openapi",
+    "pino",
+    "postgres",
     "postgresql",
     "presoul",
     "promisify",
@@ -115,5 +131,6 @@
   "gitlens.hovers.currentLine.over": "line",
   "gitlens.currentLine.enabled": false,
   "gitlens.hovers.enabled": false,
-  "window.zoomLevel": 0
+  "window.zoomLevel": 0,
+  "svn.enableProposedApi": "none"
 }
