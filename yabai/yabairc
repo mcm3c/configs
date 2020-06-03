@@ -1,19 +1,20 @@
 #!/usr/bin/env sh
 
 # bar settings
-yabai -m config status_bar                   on
+yabai -m config external_bar all:20:0
+
+yabai -m config status_bar                   off
 yabai -m config status_bar_text_font         "Helvetica Neue:Bold:12.0"
 yabai -m config status_bar_icon_font         "FontAwesome:Regular:12.0"
 yabai -m config status_bar_background_color  0xff202020
 yabai -m config status_bar_foreground_color  0xffa8a8a8
-yabai -m config status_bar_space_icon_strip  1 2 3 4 5 6 7 8 9 10
-yabai -m config status_bar_power_icon_strip   
+yabai -m config status_bar_space_icon_strip  1 2 3 4 q w s1 s2 s3 s4 sq sw
+yabai -m config status_bar_power_icon_strip  [p]
 yabai -m config status_bar_space_icon        
-yabai -m config status_bar_clock_icon        
 
 # global settings
-yabai -m config mouse_follows_focus          off
-yabai -m config focus_follows_mouse          autofocus
+yabai -m config mouse_follows_focus          on
+yabai -m config focus_follows_mouse          autoraise
 yabai -m config window_placement             second_child
 yabai -m config window_topmost               off
 yabai -m config window_opacity               off
@@ -21,7 +22,7 @@ yabai -m config window_opacity_duration      0.0
 yabai -m config window_shadow                off
 yabai -m config window_border                off
 yabai -m config window_border_placement      inset
-yabai -m config window_border_width          4
+yabai -m config window_border_width          0
 yabai -m config window_border_radius         -1.0
 yabai -m config active_window_border_topmost off
 yabai -m config active_window_border_color   0xff775759
@@ -37,29 +38,91 @@ yabai -m config mouse_action2                resize
 
 # general space settings
 yabai -m config layout                       bsp
-yabai -m config top_padding                  0
+#yabai -m config top_padding                  0
 yabai -m config bottom_padding               0
 yabai -m config left_padding                 0
 yabai -m config right_padding                0
 yabai -m config window_gap                   0
 
-yabai -m space --create
-yabai -m space 1 --label one
+#yabai -m space --create
+#yabai -m space 1 --label one
 
-yabai -m space --create
-yabai -m space 2 --label two
+#yabai -m space --create
+#yabai -m space 2 --label two
 
-yabai -m space --create
-yabai -m space 3 --label three
+#yabai -m space --create
+#yabai -m space 3 --label three
 
-yabai -m space --create
-yabai -m space 4 --label four
+#yabai -m space --create
+#yabai -m space 4 --label four
 
-yabai -m space --create
-yabai -m space 5 --label five
+#yabai -m space --create
+#yabai -m space 5 --label five
 
-yabai -m space --create
-yabai -m space 6 --label six
+#yabai -m space --create
+#yabai -m space 6 --label six
 
+# cleaning extra spaces
+# yabai -m query --spaces | jq 'map(select(.display == 1 and .label == "")) | .[].index' | while read space; do yabai -m space --focus $space && yabai -m space --destroy; done
+
+# creating spaces
+number_of_displays=$(system_profiler SPDisplaysDataType | grep Online | wc -l | xargs)
+echo $number_of_displays
+
+for (( display_index=1; display_index<=$number_of_displays; display_index++ ))
+do
+  if [[ $display_index == 1 ]]
+  then
+    required_spaces=( one two three four five six )
+  else
+    required_spaces=( sone stwo sthree sfour sfive ssix )
+  fi
+
+  total_required_spaces=${#required_spaces[*]}
+  echo display index $display_index
+
+  # generating missing spaces
+  initially_available_spaces_string=$(yabai -m query --spaces | jq --argjson display_index "$display_index" 'map(select(.display == $display_index)) | .[].index')
+  initially_available_spaces_array=($initially_available_spaces_string)
+
+  for (( index=0; index<=$(( $total_required_spaces -1 )); index++ ))
+  do
+    if [[ "${initially_available_spaces_array[index]+1}" ]] ;
+    then
+      echo 'already exists ' "${initially_available_spaces_array[$index]}"
+    else
+      echo 'to be created ' "${required_spaces[$index]}"
+      yabai -m display --focus $display_index
+      yabai -m space --create
+    fi
+  done
+
+
+  # associating spaces with labels
+  available_spaces_string=$(yabai -m query --spaces | jq --argjson display_index "$display_index" 'map(select(.display == $display_index)) | .[].index')
+  available_spaces_array=($available_spaces_string)
+
+  for (( index=0; index<=$(( $total_required_spaces -1 )); index++ ))
+  do
+    echo 'to be associated ' "${required_spaces[$index]}" ' ' "${available_spaces_array[$index]}"
+    yabai -m space "${available_spaces_array[$index]}" --label "${required_spaces[$index]}"
+  done
+
+done
 
 echo "yabai configuration loaded.."
+
+# Ubersicht bar
+#yabai -m config top_padding    20
+yabai -m signal --add event=space_changed \
+    action="(osascript -e 'tell application \"Übersicht\" to refresh widget id \"nibar-spaces-primary-jsx\"') &"
+yabai -m signal --add event=display_changed \
+    action="(osascript -e 'tell application \"Übersicht\" to refresh widget id \"nibar-spaces-primary-jsx\"') &"
+
+yabai -m signal --add event=space_changed \
+    action="(osascript -e 'tell application \"Übersicht\" to refresh widget id \"nibar-spaces-secondary-jsx\"') &"
+yabai -m signal --add event=display_changed \
+    action="(osascript -e 'tell application \"Übersicht\" to refresh widget id \"nibar-spaces-secondary-jsx\"') &"
+
+# Other
+yabai -m rule --add app="^System Preferences$" manage=off
