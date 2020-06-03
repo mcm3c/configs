@@ -78,8 +78,10 @@
 
 # focus window
 # alt - h : yabai -m window --focus west
-cmd + alt - 0x1E : yabai -m window --focus east
-cmd + alt - 0x21 : yabai -m window --focus west
+# ]
+cmd + ctrl - 0x1E : yabai -m window --focus east
+# [
+cmd + ctrl - 0x21 : yabai -m window --focus west
 
 # swap managed window
 # shift + alt - h : yabai -m window --swap north
@@ -109,12 +111,47 @@ cmd + alt - 0x21 : yabai -m window --focus west
 # :: ywm 1 : yabai -m space --focus 1
 # cmd + § - 1 : yabai -m space --focus 1
 # § + cmd - 2 : yabai -m space --focus 2
-default < cmd - 1 : yabai -m space --focus one
-default < cmd - 2 : yabai -m space --focus two
-default < cmd - 3 : yabai -m space --focus three
-default < cmd - 4 : yabai -m space --focus four
-default < cmd - q : yabai -m space --focus five
-default < cmd - w : yabai -m space --focus six
+default < cmd - 1 : index=`yabai -m query --displays --display | jq '.index'` && \
+  if (($index == 1)) then \
+    yabai -m space --focus one && yabai -m window --focus first; \
+  else \
+    yabai -m space --focus sone && yabai -m display --focus 2 && yabai -m window --focus first; \
+  fi
+
+default < cmd - 2 : index=`yabai -m query --displays --display | jq '.index'` && \
+  if (($index == 1)) then \
+    yabai -m space --focus two && yabai -m window --focus first; \
+  else \
+    yabai -m space --focus stwo && yabai -m window --focus first; \
+  fi
+
+default < cmd - 3 : index=`yabai -m query --displays --display | jq '.index'` && \
+  if (($index == 1)) then \
+    yabai -m space --focus three && yabai -m window --focus first; \
+  else \
+    yabai -m space --focus sthree && yabai -m window --focus first; \
+  fi
+
+default < cmd - 4 : index=`yabai -m query --displays --display | jq '.index'` && \
+  if (($index == 1)) then \
+    yabai -m space --focus four && yabai -m window --focus first; \
+  else \
+    yabai -m space --focus sfour && yabai -m window --focus first; \
+  fi
+
+default < cmd - q : index=`yabai -m query --displays --display | jq '.index'` && \
+  if (($index == 1)) then \
+    yabai -m space --focus five && yabai -m window --focus first; \
+  else \
+    yabai -m space --focus sfive && yabai -m window --focus first; \
+  fi
+
+default < cmd - w : index=`yabai -m query --displays --display | jq '.index'` && \
+  if (($index == 1)) then \
+    yabai -m space --focus six && yabai -m window --focus first; \
+  else \
+    yabai -m space --focus ssix && yabai -m window --focus first; \
+  fi
 
 :: default : true
 :: plain : true
@@ -122,8 +159,8 @@ default < cmd - w : yabai -m space --focus six
 ctrl + cmd + shift + alt - p ; plain
 plain < ctrl + cmd + shift + alt - d ; default
 
-0x73 : skhd -k "cmd - left"
-0x77 : skhd -k "cmd - right"
+# 0x73 : skhd -k "cmd - left"
+# 0x77 : skhd -k "cmd - right"
 
 shift - 0x72 : skhd -k "ctrl + cmd + shift + alt - p" ; skhd -k "cmd - v" ; skhd -k "ctrl + cmd + shift + alt - d"
 shift - 0x75 : skhd -k "ctrl + cmd + shift + alt - p" ; skhd -k "cmd - x" ; skhd -k "ctrl + cmd + shift + alt - d"
@@ -235,24 +272,24 @@ ctrl + shift - f : skhd -k "ctrl + cmd + shift + alt - p" ; skhd -k "cmd + shift
 
 # send window to desktop and follow focus
 # shift + cmd - z : yabai -m window --space next; yabai -m space --focus next
-ctrl + shift + cmd - 1 : yabai -m window --space  one; yabai -m space --focus one
-ctrl + shift + cmd - 2 : yabai -m window --space  two; yabai -m space --focus two
-ctrl + shift + cmd - 3 : yabai -m window --space  three; yabai -m space --focus three
-ctrl + shift + cmd - 4 : yabai -m window --space  four; yabai -m space --focus four
-ctrl + shift + cmd - 5 : yabai -m window --space  five; yabai -m space --focus five
-ctrl + shift + cmd - 6 : yabai -m window --space  six; yabai -m space --focus six
+ctrl + shift + cmd - 1 : yabai -m window --space  one
+ctrl + shift + cmd - 2 : yabai -m window --space  two
+ctrl + shift + cmd - 3 : yabai -m window --space  three
+ctrl + shift + cmd - 4 : yabai -m window --space  four
+ctrl + shift + cmd - q : yabai -m window --space  five
+ctrl + shift + cmd - w : yabai -m window --space  six
 
 # focus monitor
 # ctrl + alt - z  : yabai -m display --focus prev
 # ctrl + alt - 3  : yabai -m display --focus 3
-cmd - 0x21  : yabai -m display --focus 1
-cmd - 0x1E  : yabai -m display --focus 2
+# cmd - 0x21  : yabai -m display --focus 1 && yabai -m window --focus first
+cmd - 0x1E  : yabai -m display --focus 2 && yabai -m window --focus first
 
 # send window to monitor and follow focus
 # ctrl + cmd - c  : yabai -m window --display next; yabai -m display --focus next
-# ctrl + cmd - 1  : yabai -m window --display 1; yabai -m display --focus 1
-shift + cmd - 0x21 : yabai -m window --display 1; yabai -m display --focus 1
-shift + cmd - 0x1E : yabai -m window --display 2; yabai -m display --focus 2
+# ctrl + cmd - 1  : yabai -m window --display 1
+ctrl + shift + cmd - 0x21 : yabai -m window --display 1
+ctrl + shift + cmd - 0x1E : yabai -m window --display 2
 
 # move floating window
 # shift + ctrl - a : yabai -m window --move rel:-20:0
@@ -286,5 +323,9 @@ shift + cmd - 0x1E : yabai -m window --display 2; yabai -m display --focus 2
 #           yabai -m window --toggle border;\
 #           yabai -m window --toggle pip
 
+cmd + alt - d : yabai -m space --destroy
+
+cmd + ctrl - p : yabai -m window --swap recent
+cmd - e : open -a dmenu-mac
 
 ctrl + cmd - 0x24 : iterm.sh
