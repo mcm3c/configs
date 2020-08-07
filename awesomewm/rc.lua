@@ -39,7 +39,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/home/mcm/.config/awesome/default/theme.lua")
+beautiful.init("/home/mcm/.config/awesome/themes/blackburn/theme.lua")
 gears.wallpaper.set("#000")
 
 -- This is used later as the default terminal and editor to run.
@@ -213,7 +213,7 @@ end
 -- Create a textclock widget
 mytextclock = awful.widget.textclock(" %d.%m %H:%M ", 2)
 
-local widgets = {kbdwidget, mytextclock}
+local widgets = {batterywidget, kbdwidget, mytextclock}
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -353,7 +353,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "t", function () awful.util.spawn("amixer set Headphone toggle & amixer set Speaker toggle &") end),
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey,           }, "e", function () awful.util.spawn("dmenu_run") end),
-    awful.key({ modkey, "Control" }, "l", function () awful.util.spawn("gnome-screensaver-command -l") end),
+    awful.key({ modkey, "Control" }, "l", function () awful.util.spawn("slock") end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     -- awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
