@@ -1,4 +1,4 @@
-// Place your key bindings in this file to override the defaultsauto[]
+// linux based keybindings
 [
   {
     "key": "ctrl+alt+left",
@@ -72,7 +72,7 @@
     "command": "-workbench.action.focusFirstEditorGroup"
   },
   {
-    "key": "ctrl+1",
+    "key": "ctrl+shift+e",
     "command": "workbench.action.quickOpenNavigatePreviousInFilePicker",
     "when": "inFilesPicker && inQuickOpen"
   },
@@ -83,7 +83,13 @@
   },
   {
     "key": "ctrl+1",
-    "command": "workbench.view.explorer"
+    "command": "workbench.view.explorer",
+    "when": "activeViewlet != 'workbench.view.explorer'"
+  },
+  {
+    "key": "ctrl+1",
+    "command": "workbench.action.closeSidebar",
+    "when": "activeViewlet == 'workbench.view.explorer'"
   },
   {
     "key": "ctrl+shift+e",
@@ -95,7 +101,13 @@
   },
   {
     "key": "ctrl+2",
-    "command": "workbench.view.scm"
+    "command": "workbench.view.scm",
+    "when": "activeViewlet != 'workbench.view.scm'"
+  },
+  {
+    "key": "ctrl+2",
+    "command": "workbench.action.closeSidebar",
+    "when": "activeViewlet == 'workbench.view.scm'"
   },
   {
     "key": "ctrl+shift+g",
@@ -115,11 +127,13 @@
   },
   {
     "key": "ctrl+4",
-    "command": "-workbench.action.focusFourthEditorGroup"
+    "command": "workbench.view.search",
+    "when": "activeViewlet != 'workbench.view.search'"
   },
   {
     "key": "ctrl+4",
-    "command": "workbench.view.extension.test"
+    "command": "workbench.action.closeSidebar",
+    "when": "activeViewlet == 'workbench.view.search'"
   },
   {
     "key": "ctrl+5",
@@ -238,5 +252,18 @@
   {
     "key": "ctrl+w",
     "command": "deleteWordEndLeft"
+  },
+  {
+    "key": "ctrl+shift+p",
+    "command": "-workbench.action.quickOpenNavigatePreviousInFilePicker",
+    "when": "inFilesPicker && inQuickOpen"
+  },
+  {
+    "key": "ctrl+shift+e",
+    "command": "workbench.action.showCommands"
+  },
+  {
+    "key": "ctrl+shift+p",
+    "command": "-workbench.action.showCommands"
   }
 ]
