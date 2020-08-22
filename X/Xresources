@@ -1,0 +1,10 @@
+XTerm*utf8Title: true
+XTerm*background: #101010
+XTerm*foreground: #d0d0d0
+XTerm*coursorColor: #d0d0d0
+
+XTerm*renderFont: true
+XTerm*faceName: Ubuntu Mono
+XTerm*faceSize: 14
+
+XTerm*saveLines: 100000
