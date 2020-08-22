@@ -90,6 +90,10 @@
       "gitDecoration.ignoredResourceForeground": "#848504",
       "gitDecoration.modifiedResourceForeground": "#6897BB",
       "gitDecoration.untrackedResourceForeground": "#D1675A",
+
+      "statusBar.background" : "#1A1A1A",
+      "statusBar.noFolderBackground" : "#212121",
+      "statusBar.debuggingBackground": "#263238"
     },
     "workbench.colorTheme": "Darcula Extra",
     "workbench.tree.indent": 20,
