@@ -43,7 +43,7 @@ beautiful.init("/home/mcm/.config/awesome/themes/blackburn/theme.lua")
 gears.wallpaper.set("#000")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
+terminal = "terminator"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
