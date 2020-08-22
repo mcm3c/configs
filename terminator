@@ -1,0 +1,26 @@
+[global_config]
+  window_state = maximise
+  tab_position = hidden
+  title_use_system_font = False
+  title_font = Ubuntu Mono 15
+[keybindings]
+[profiles]
+  [[default]]
+    cursor_blink = False
+    cursor_color = "#aaaaaa"
+    font = Ubuntu Mono 15
+    foreground_color = "#ffffff"
+    show_titlebar = False
+    scrollback_lines = 50000
+    scrollback_infinite = True
+    palette = "#000000:#cd0000:#00cd00:#cdcd00:#5c81ff:#cd00cd:#00cdcd:#e5e5e5:#7f7f7f:#ff0000:#00ff00:#ffff00:#5c5cff:#ff00ff:#00ffff:#ffffff"
+    use_system_font = False
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]
