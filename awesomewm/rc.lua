@@ -503,6 +503,11 @@ awful.rules.rules = {
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c, startup)
+    -- Fuck maximalism!
+    c.maximized = false
+    c.maximized_horizontal = false
+    c.maximized_vertical = false
+        
     -- Enable sloppy focus
     c:connect_signal("mouse::enter", function(c)
         if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
