@@ -1627,6 +1627,7 @@
                                     {
                                         "bundle_identifiers": [
                                             "^org\\.chromium\\.Chromium$",
+                                            "^com\\.google\\.Chrome$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "type": "frontmost_application_if"
@@ -1660,6 +1661,7 @@
                                     {
                                         "bundle_identifiers": [
                                             "^org\\.chromium\\.Chromium$",
+                                            "^com\\.google\\.Chrome$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "type": "frontmost_application_if"
@@ -1693,6 +1695,7 @@
                                     {
                                         "bundle_identifiers": [
                                             "^org\\.chromium\\.Chromium$",
+                                            "^com\\.google\\.Chrome$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "type": "frontmost_application_if"
@@ -1726,6 +1729,7 @@
                                     {
                                         "bundle_identifiers": [
                                             "^org\\.chromium\\.Chromium$",
+                                            "^com\\.google\\.Chrome$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "type": "frontmost_application_if"
@@ -1759,6 +1763,7 @@
                                     {
                                         "bundle_identifiers": [
                                             "^org\\.chromium\\.Chromium$",
+                                            "^com\\.google\\.Chrome$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "type": "frontmost_application_if"
@@ -1792,6 +1797,7 @@
                                     {
                                         "bundle_identifiers": [
                                             "^org\\.chromium\\.Chromium$",
+                                            "^com\\.google\\.Chrome$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "type": "frontmost_application_if"
@@ -1825,6 +1831,7 @@
                                     {
                                         "bundle_identifiers": [
                                             "^org\\.chromium\\.Chromium$",
+                                            "^com\\.google\\.Chrome$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "type": "frontmost_application_if"
@@ -1858,6 +1865,7 @@
                                     {
                                         "bundle_identifiers": [
                                             "^org\\.chromium\\.Chromium$",
+                                            "^com\\.google\\.Chrome$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "type": "frontmost_application_if"
@@ -1891,6 +1899,7 @@
                                     {
                                         "bundle_identifiers": [
                                             "^org\\.chromium\\.Chromium$",
+                                            "^com\\.google\\.Chrome$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "type": "frontmost_application_if"
