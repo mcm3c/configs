@@ -1061,7 +1061,8 @@
                                             "^io\\.alacritty$",
                                             "^co\\.zeit\\.hyper$",
                                             "^com\\.googlecode\\.iterm2$",
-                                            "^com\\.apple\\.Terminal$"
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.microsoft\\.VSCode$"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
